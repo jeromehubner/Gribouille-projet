@@ -3,6 +3,7 @@ package vue;
 //import java.io.File;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +11,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+
 
 //import java.awt.Graphics;
 import javax.swing.JFileChooser;
@@ -39,7 +41,7 @@ public class Fenetre extends JFrame {
     public Fenetre() {
         sizeX = 800; sizeY = 500;
         dessin = new Dessin();
-        zoneListeDeTaches = new ZoneListeDeTaches();
+        zoneListeDeTaches = new ZoneListeDeTaches(new Dimension(sizeX/3, sizeY));
         
         EcouteurFermeture ecouteurFermeture = new EcouteurFermeture(this, dessin);
         EcouteurCouleur ecouteurCouleur = new EcouteurCouleur(this);
@@ -54,6 +56,7 @@ public class Fenetre extends JFrame {
         addWindowListener(ecouteurFermeture);
 
         setLocationRelativeTo(null);
+        setResizable(false);
 
         /*--- Barre de menus ---*/
         JMenuBar barreDeMenus = new JMenuBar();

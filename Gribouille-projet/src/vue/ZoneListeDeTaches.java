@@ -1,6 +1,7 @@
 package vue;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GraphicsDevice;
@@ -16,8 +17,10 @@ public class ZoneListeDeTaches extends JPanel {
 	private JButton boutonBas;
 	private JFrame tache;
 	
-	public ZoneListeDeTaches() {
+	public ZoneListeDeTaches(Dimension dimension) {
 		setLayout(new FlowLayout());
+		setPreferredSize(dimension);
+		
 		boutonHaut = new JButton("Haut");
 		boutonBas = new JButton("Bas");
 		add(boutonHaut);
