@@ -4,6 +4,7 @@ package vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +14,11 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 
+
+
+
+
+import javax.swing.JButton;
 //import java.awt.Graphics;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -20,8 +26,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 import modele.Dessin;
+import controleur.EcouteurBoutonAjouterUneTache;
 import controleur.EcouteurCouleur;
 import controleur.EcouteurCrayon;
 import controleur.EcouteurEffacement;
@@ -41,14 +49,15 @@ public class Fenetre extends JFrame {
     public Fenetre() {
         sizeX = 800; sizeY = 500;
         dessin = new Dessin();
-        zoneListeDeTaches = new ZoneListeDeTaches(new Dimension(sizeX/3, sizeY));
         
         EcouteurFermeture ecouteurFermeture = new EcouteurFermeture(this, dessin);
         EcouteurCouleur ecouteurCouleur = new EcouteurCouleur(this);
+        EcouteurBoutonAjouterUneTache ecouteurBoutonSauvegarder = new EcouteurBoutonAjouterUneTache(this, zoneListeDeTaches);
         
         barreDEtat = new BarreDEtat();
         crayon = new EcouteurCrayon(this, dessin);
         zoneDeDessin = new ZoneDeDessin(dessin, crayon);
+        zoneListeDeTaches = new ZoneListeDeTaches(this, new Dimension(sizeX/3, sizeY/2));
 
         setTitle("Mémo");
         setSize(sizeX, sizeY);
@@ -134,7 +143,7 @@ public class Fenetre extends JFrame {
                 
         this.getContentPane().add(zoneDeDessin, BorderLayout.CENTER);
         this.getContentPane().add(barreDEtat, BorderLayout.SOUTH);
-        this.getContentPane().add(zoneListeDeTaches, BorderLayout.EAST);
+        this.getContentPane().add(new JScrollPane(zoneListeDeTaches), BorderLayout.EAST);
         
         setVisible(true);
     }
@@ -231,5 +240,9 @@ public class Fenetre extends JFrame {
                                               JOptionPane.ERROR_MESSAGE);
                 break;
         }
+    }
+    
+    public ZoneDeDessin getZoneDeDessin(){
+    	return this.zoneDeDessin;
     }
 }

@@ -6,7 +6,7 @@ import java.awt.event.WindowEvent;
 import vue.Fenetre;
 import modele.Dessin;
 
-public class EcouteurFermeture extends EcouteurOpérationRisquée {
+public class EcouteurFermeture extends EcouteurOperationRisquee {
     public EcouteurFermeture(Fenetre fenetre, Dessin dessin) {
         super(fenetre, dessin, "Fermerture de l'application Gribouille");
     }

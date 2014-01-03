@@ -8,7 +8,7 @@ import java.awt.event.WindowAdapter;
 import vue.Fenetre;
 import modele.Dessin;
 
-public class EcouteurOpérationRisquée
+public class EcouteurOperationRisquee
 //pour la gestion de la case de fermeture de la fenêtre de l'application
 					extends WindowAdapter
 //pour les options de menu déclenchant des opérations qui font perdre les données
@@ -18,7 +18,7 @@ public class EcouteurOpérationRisquée
     protected Dessin dessin;
     protected boolean abandon;
     protected String nomOpération;
-    public EcouteurOpérationRisquée(Fenetre fenetre,
+    public EcouteurOperationRisquee(Fenetre fenetre,
                                     Dessin dessin,
                                     String nomOpération) {
         this.fenetre = fenetre;

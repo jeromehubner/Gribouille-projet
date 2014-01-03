@@ -12,12 +12,10 @@ public class BarreDEtat extends JPanel {
     private JButton boutonSauvegarder;
     
     public BarreDEtat() {
-    	boutonSauvegarder = new JButton("Sauvegarder >>");
     	setLayout(new GridLayout(1, 4));
         add(position = new JLabel());
         add(outil = new JLabel());
         add(couleur = new JLabel());
-        add(boutonSauvegarder);
     }
     public void afficheCoordonnées(int x, int y) {
         position.setText("( " + x + ", " + y + " )");
